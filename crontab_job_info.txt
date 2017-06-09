@@ -1,0 +1,6 @@
+On a Linux machine, edit crontab with the command "crontab -e" and add the following:
+
+# run the CCHIT update app daily at 9pm EST or 1am UTC
+0 01 * * * cd /home/dlucas/tempApps && ./updateCertificationStatusApp.sh
+# run the script to close the CCHIT update app daily at 4am EST or 8am UTC
+0 08 * * * cd /home/dlucas/tempApps && ./closeUpdateCertificationStatusApp.sh

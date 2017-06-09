@@ -1,0 +1,16 @@
+#temp-app properties
+username=insertUsernameHere
+password=insertPasswordHere
+apiKey=12345a123456abc1abc1234a12ab1234
+basePath=/rest
+chplUrlBegin=http://localhost:3000
+
+# API end-points
+authenticate=/auth/authenticate
+getCertifiedProductDetails=/certified_products/%s/details
+updateCertifiedProduct=/certified_products/update
+refreshToken=/auth/keep_alive
+
+# Token parameters
+tokenRefreshDelayInMillis=900000
+tokenExpirationTimeInMillis=1800000
