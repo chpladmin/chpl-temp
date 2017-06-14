@@ -92,6 +92,7 @@ public class UpdateCertificationStatusApp extends App {
 			ObjectMapper mapper = new ObjectMapper();
 			ListingUpdateRequest updateRequest = cpUpdateMap.get(cpDTO);
 			String json = mapper.writeValueAsString(updateRequest);
+			logger.info("JSON Request: " + json);
 			HttpUtil.postAuthenticatedBodyRequest(url, null, props, token.getToken(), json);
 			token = token.getRefreshedToken(token, props);
 			Long elapsedTime = System.currentTimeMillis() - startTime;
