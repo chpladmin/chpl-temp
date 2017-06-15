@@ -9,16 +9,8 @@
 TIMESTAMP=$(date "+%Y.%m.%d-%H.%M.%S")
 log=logs/log.certStatusApp.$TIMESTAMP.txt
 
-# deal with spaces in filenames by saving off the default file separator (including spaces)
-# and using a different one for this application
-SAVEIFS=$IFS
-IFS=$(echo -en "\n\b")
-
 # put header info into log, then output application info into log file
 echo "Update Certification Status for CCHIT Retired in 2014: " $TIMESTAMP >> $log
 echo "####################################" >> $log
 java -jar certStatusApp-jar-with-dependencies.jar 2>&1 | tee $log
 echo "####################################" >> $log
-
-# restore filename delimiters
-IFS=$SAVEIFS

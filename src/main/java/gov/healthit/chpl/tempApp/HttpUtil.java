@@ -83,6 +83,9 @@ public class HttpUtil {
             		.addHeader("Content-Type", ContentType.APPLICATION_JSON.getMimeType())
             		.addHeader("API-key", props.getProperty("apiKey"))
             		.addHeader("Authorization", "Bearer " + token)
+            		.socketTimeout(1800000) // 30 min timeout
+                    .connectTimeout(1800000)
+                    .useExpectContinue()
                     .execute().returnContent().asString(); 
             logger.debug("{},result:{}",uri,content); 
             return content; 
@@ -99,6 +102,9 @@ public class HttpUtil {
             		.version(HttpVersion.HTTP_1_1)
             		.addHeader("Content-Type", ContentType.APPLICATION_JSON.getMimeType())
             		.addHeader("API-key", props.getProperty("apiKey"))
+            		.socketTimeout(1800000) // 30 min timeout
+                    .connectTimeout(1800000)
+                    .useExpectContinue()
                     .execute().returnContent().asString(); 
             logger.debug("{},result:{}",uri,content); 
             return content; 
@@ -116,6 +122,9 @@ public class HttpUtil {
             		.addHeader("Content-Type", ContentType.APPLICATION_JSON.getMimeType())
             		.addHeader("API-key", props.getProperty("apiKey"))
             		.addHeader("Authorization", "Bearer " + token)
+            		.socketTimeout(1800000) // 30 min timeout
+                    .connectTimeout(1800000)
+                    .useExpectContinue()
                     .execute().returnContent().asString(); 
             logger.debug("{},result:{}",uri,content); 
             return content; 
@@ -132,6 +141,9 @@ public class HttpUtil {
             		.version(HttpVersion.HTTP_1_1)
             		.addHeader("Content-Type", ContentType.APPLICATION_JSON.getMimeType())
             		.addHeader("API-key", props.getProperty("apiKey"))
+            		.socketTimeout(1800000) // 30 min timeout
+                    .connectTimeout(1800000)
+                    .useExpectContinue()
                     .execute().returnContent().asString(); 
             logger.debug("{},result:{}",uri,content); 
             return content; 
@@ -150,6 +162,9 @@ public class HttpUtil {
             		.addHeader("API-key", props.getProperty("apiKey"))
             		.addHeader("Authorization", "Bearer " + token)
                     .bodyString(body, ContentType.APPLICATION_JSON) 
+                    .socketTimeout(1800000) // 30 min timeout
+                    .connectTimeout(1800000)
+                    .useExpectContinue()
                     .execute().returnContent().asString(); 
             logger.debug("{},result:{}",uri,content); 
             return content; 
@@ -167,11 +182,14 @@ public class HttpUtil {
             		.addHeader("Content-Type", ContentType.APPLICATION_JSON.getMimeType())
             		.addHeader("API-key", props.getProperty("apiKey"))
                     .bodyString(body, ContentType.APPLICATION_JSON) 
+                    .socketTimeout(1800000) // 30 min timeout
+                    .connectTimeout(1800000)
+                    .useExpectContinue()
                     .execute().returnContent().asString(); 
             logger.debug("{},result:{}",uri,content); 
             return content; 
         } catch (Exception e) { 
-         logger.error("postBodyRequest:{},error:{}",uri,e); 
+         logger.error("postBodyRequest:{},error:{}",uri,e);
          return null; 
         } 
     } 
