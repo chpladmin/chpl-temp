@@ -27,9 +27,10 @@ public class Token {
 		String bodyJson = "{ \"userName\": \"" + props.getProperty("username") + "\","
 							+ " \"password\": \"" + props.getProperty("password") + "\" }";
 		String tokenResponse = HttpUtil.postBodyRequest(url, null, props, bodyJson);
+		logger.info("Retrieved token: " + tokenResponse);
 		JsonObject jobj = new Gson().fromJson(tokenResponse, JsonObject.class);
+		logger.info("Token as JsonObject: " + jobj);
 		token.setToken(jobj.get("token").toString());
-		logger.info("Finished getting new token");
 		return token;
 	}
 	
@@ -37,9 +38,10 @@ public class Token {
 		logger.info("Get refreshed token");
 		String url = props.getProperty("chplUrlBegin") + props.getProperty("basePath") + props.getProperty("refreshToken");
 		String tokenResponse = HttpUtil.getAuthenticatedRequest(url, null, props, token.getToken());
+		logger.info("Retrieved token: " + tokenResponse);
 		JsonObject jobj = new Gson().fromJson(tokenResponse, JsonObject.class);
+		logger.info("Token as JsonObject: " + jobj);
 		token.setToken(jobj.get("token").toString());
-		logger.info("Finished getting refreshed token");
 		return token;
 	}
 	
